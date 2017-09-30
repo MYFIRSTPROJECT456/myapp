@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Add student</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+	<form action="/student/adddata" method="post" class="form-inline" style="margin-top: 25px; margin-left: 15px;" ">
+<label for="">S_ID :</label> <input type="number" class="form-control form-inline" id="id" name="id">
+<label for="">	FIRSTNAME : </label><input type="text" class="form-control"  id="FIRSTNAME" name="fname">
+<label for="">LASTNAME : </label><input type="text" class="form-control" id="lname" name="lname">
+<label for="">ADDRESS :</label> <input type="text" class="form-control" id="address" name="address">
+
+<input type="submit" value="Add Student" class="btn btn-success">
+
+	</form>
+	<script src="/student.js"></script>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.js"></script>
+</body>
+</html>
+<!-- localhost:8080/student/adddata
