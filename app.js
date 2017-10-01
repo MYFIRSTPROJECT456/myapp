@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var student = require('./routes/student');
-
+//var student = require('./model/student')
+//var pool = require('./util/dbconnection');
 var app = express();
 
 /*var mysql = require('mysql');*/
@@ -35,6 +36,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/student', student);
 
+//app.use('/student', student);
+//app.use('/dbconnection', pool);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
