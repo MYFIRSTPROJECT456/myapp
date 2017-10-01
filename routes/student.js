@@ -3,12 +3,22 @@ var router = express.Router();
 var studentModel = require('../model/studentmodel');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
- 	
-  res.render('studentlist');
+  studentModel.getStudent(function(err, result) {
+    	if (err) {
+    	
+    		res.render('studentlist', {err:err});
+    	} else  {
+    		res.render('studentlist', {data:result});
+    	}
+    });	
+  
 });
 
 router.get('/add', function(req, res, next) {
   res.render('add');
+});
+router.get('/update', function(req, res, next) {
+  res.render('update');
 });
 
 router.post('/adddata', function(req, res, next) {
@@ -26,6 +36,7 @@ router.post('/adddata', function(req, res, next) {
     		res.redirect('/student');
     	}
     });	
+    
   	//res.send('respond with a resource');
 });
 

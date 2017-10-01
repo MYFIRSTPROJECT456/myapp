@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Studentlist</title>
-	<link rel="stylesheet" href="../public/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
 
 </head>
 <body>
@@ -14,14 +14,16 @@
 		<th>LASTNAME</th>
 		<th>ADDRESS</th>
 	</tr>
+	<% for(var i=0; i< data.length; i++) {%>
 	<tr>
-		<td>1</td>
-		<td>ad</td>
-		<td>ad</td>
-		<td>ad</td>
+		<td><%= data[i].ID %></td>
+		<td><%= data[i].FIRSTNAME %></td>
+		<td><%= data[i].LASTNAME %></td>
+		<td><%= data[i].ADDRESS %></td>
 	</tr>
+	<% } %>
 </table>
-<script src="../public/js/jquery.js"></script>
-<script src="../public/js/bootstrap.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
 </body>
 </html>
