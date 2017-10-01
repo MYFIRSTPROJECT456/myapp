@@ -4,15 +4,20 @@
 	<meta charset="UTF-8">
 	<title>Studentlist</title>
 	<link rel="stylesheet" href="/css/bootstrap.css">
-
+	
 </head>
 <body>
+<div class="container">
+<input href="/student/add" style="margin-top: 5px;" type="button" value="Add Student" class="btn btn-success btn-lg btn-block" id="btn">
+<br>
 <table class="table table-striped">
-	<tr>
+	<tr style="background-color: grey;">
 		<th>ID</th>
 		<th>FIRSTNAME</th>
 		<th>LASTNAME</th>
 		<th>ADDRESS</th>
+		<th></th>
+		<th></th>
 	</tr>
 	<% for(var i=0; i< data.length; i++) {%>
 	<tr>
@@ -20,9 +25,19 @@
 		<td><%= data[i].FIRSTNAME %></td>
 		<td><%= data[i].LASTNAME %></td>
 		<td><%= data[i].ADDRESS %></td>
+		<td><a href="/student/update?studentid=<%= data[i].ID %>" data-toggle="tooltip" title="edit" id="edit"><span class="glyphicon glyphicon-edit">Edit</span></a></td>
+		<td><a href="" data-toggle="tooltip" title="delete"><span class="glyphicon glyphicon-trash"></span></a></td>
 	</tr>
 	<% } %>
 </table>
+</div>
+<script>
+	$(document).ready(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+		$('[data-toggle="tooltip"]').tooltip();
+
+	});
+</script>
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.js"></script>
 </body>

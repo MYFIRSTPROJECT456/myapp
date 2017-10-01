@@ -18,7 +18,17 @@ router.get('/add', function(req, res, next) {
   res.render('add');
 });
 router.get('/update', function(req, res, next) {
-  res.render('update');
+	var id = req.query.studentid;
+	studentModel.getStudentById(id, function(err, result) {
+    	if (err) {
+    	
+    		res.render('studentlist', {err:err});
+    	} else  {
+    		res.render('update', {data:result});
+    	}
+    });	
+
+  //res.render('update');
 });
 
 router.post('/adddata', function(req, res, next) {
@@ -32,6 +42,24 @@ router.post('/adddata', function(req, res, next) {
     	if (err) {
     		var msg = 'Wrong Input';
     		res.redirect('/student/add?err='+msg);
+    	} else  {
+    		res.redirect('/student');
+    	}
+    });	
+    
+  	//res.send('respond with a resource');
+});
+router.post('/updatedata', function(req, res, next) {
+	var studentData = {
+   		id : req.body.id,
+   		fname : req.body.fname,
+   		lname : req.body.lname,
+   		address : req.body.address,
+    }
+    studentModel.editStudent(studentData, function(err, result) {
+    	if (err) {
+    		var msg = 'Wrong Input';
+    		res.redirect('/student/update?studentid='+req.body.id);
     	} else  {
     		res.redirect('/student');
     	}
