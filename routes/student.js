@@ -3,6 +3,7 @@ var router = express.Router();
 var studentModel = require('../model/studentmodel');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  console.log('clear');
   studentModel.getStudent(function(err, result) {
     	if (err) {
     	
@@ -13,10 +14,23 @@ router.get('/', function(req, res, next) {
     });	
   
 });
-
+//add routing 
 router.get('/add', function(req, res, next) {
   res.render('add');
 });
+
+//delete routing
+
+router.get('/delete', function(req, res, next) {
+  var id = req.query.studentid;
+  studentModel.deleteStudent(id, function(err, result) {
+      res.redirect('/student');
+      
+    }); 
+});
+
+//update routing
+
 router.get('/update', function(req, res, next) {
 	var id = req.query.studentid;
 	studentModel.getStudentById(id, function(err, result) {
@@ -30,6 +44,8 @@ router.get('/update', function(req, res, next) {
 
   //res.render('update');
 });
+
+//adddata posting
 
 router.post('/adddata', function(req, res, next) {
 	var studentData = {
@@ -49,6 +65,9 @@ router.post('/adddata', function(req, res, next) {
     
   	//res.send('respond with a resource');
 });
+
+//update posting
+
 router.post('/updatedata', function(req, res, next) {
 	var studentData = {
    		id : req.body.id,
@@ -67,5 +86,7 @@ router.post('/updatedata', function(req, res, next) {
     
   	//res.send('respond with a resource');
 });
+
+
 
 module.exports = router;
